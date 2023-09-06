@@ -1,2 +1,2 @@
 # monkeys-tower
-e-commerce for skin care products
+e-commerce for toy products
