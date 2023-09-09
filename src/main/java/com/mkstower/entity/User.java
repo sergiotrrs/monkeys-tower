@@ -1,9 +1,11 @@
 package com.mkstower.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.UserFieldLimits;
 
 import jakarta.persistence.*;
@@ -16,8 +18,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "user")
-public class User implements UserFieldLimits {
+public class User implements UserFieldLimits, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -44,18 +47,19 @@ public class User implements UserFieldLimits {
 	@Column(name = "active")
 	private boolean active;
 	
-	//@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	@OneToMany(mappedBy = "user")
-	private List<Adress> adresses = new ArrayList<>();
-
-	@OneToMany(mappedBy = "user")
-	private List<Order> orders = new ArrayList<>();
 	
-	@ManyToMany
-	@JoinTable(
-			  name = "user_has_roles", 
-			  joinColumns = @JoinColumn(name = "user_id"), 
-			  inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles = new ArrayList<>();
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER,  cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties("user")
+	private List<Address> addresses = new ArrayList<>();
+
+//	@OneToMany(mappedBy = "user")
+//	private List<Order> orders = new ArrayList<>();
+//	
+//	@ManyToMany
+//	@JoinTable(
+//			  name = "user_has_roles", 
+//			  joinColumns = @JoinColumn(name = "user_id"), 
+//			  inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	private List<Role> roles = new ArrayList<>();
 
 }

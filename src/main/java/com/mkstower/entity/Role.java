@@ -25,7 +25,7 @@ public class Role implements RoleFieldLimits {
 	private String name;
 	@Column(name = "description", length = DESCRIPTION_DB_LENGTH)
 	private String description;	
-	
-	@ManyToMany(mappedBy = "roles")
-	private List<User> users = new ArrayList<>();
+//	
+//	@ManyToMany(mappedBy = "roles")
+//	private List<User> users = new ArrayList<>();
 }

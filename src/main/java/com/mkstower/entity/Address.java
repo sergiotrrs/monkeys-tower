@@ -1,5 +1,8 @@
 package com.mkstower.entity;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.AdressFieldLimits;
 
 import jakarta.persistence.*;
@@ -11,9 +14,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "adress")
-public class Adress implements AdressFieldLimits {
+@Table(name = "address")
+public class Address implements AdressFieldLimits, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -27,8 +31,9 @@ public class Adress implements AdressFieldLimits {
 	@Column(name = "active")
 	private boolean active;
 	
-	@ManyToOne
-    @JoinColumn(name = "user_id")
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE )
+	//@JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("addresses")
 	private User user;
 	
 }
