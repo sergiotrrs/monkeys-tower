@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.ProductFieldLimits;
 
 import jakarta.persistence.*;
@@ -45,10 +44,7 @@ public class Product implements ProductFieldLimits {
 			  name = "product_has_categories", 
 			  joinColumns = @JoinColumn(name = "product_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "category_id"))
-	@JsonIgnoreProperties("products")
 	private List<Category> categories = new ArrayList<>();
-//	
-//	@ManyToMany(mappedBy = "products")
-//	private List<Order> orders = new ArrayList<>();
+
 
 }

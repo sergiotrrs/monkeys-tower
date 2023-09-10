@@ -1,9 +1,5 @@
 package com.mkstower.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.CategoryFieldLimits;
 
 import jakarta.persistence.*;
@@ -26,9 +22,5 @@ public class Category implements CategoryFieldLimits {
 	private String name;
 	@Column(name = "description", length = DESCRIPTION_DB_LENGTH)
 	private String description;
-	
-	@ManyToMany(mappedBy = "categories")
-	@JsonIgnoreProperties("categories")
-	private List<Product> products = new ArrayList<>();
 	
 }
