@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> getAllActiveCategories() {
 		// return userRepository.findAll();
 		List<Category> categories = new ArrayList<>();
-		categories.add(new Category(99, "Electrónico", "Producto electrónico", null));
+		categories.add(new Category());
 		return categories;
 	}
 

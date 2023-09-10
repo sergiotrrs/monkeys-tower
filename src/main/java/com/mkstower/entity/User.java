@@ -55,11 +55,12 @@ public class User implements UserFieldLimits, Serializable {
 //	@OneToMany(mappedBy = "user")
 //	private List<Order> orders = new ArrayList<>();
 //	
-//	@ManyToMany
-//	@JoinTable(
-//			  name = "user_has_roles", 
-//			  joinColumns = @JoinColumn(name = "user_id"), 
-//			  inverseJoinColumns = @JoinColumn(name = "role_id"))
-//	private List<Role> roles = new ArrayList<>();
+	@ManyToMany
+	@JoinTable(
+			  name = "user_has_roles", 
+			  joinColumns = @JoinColumn(name = "user_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "role_id"))
+	//@JsonIgnoreProperties("users")
+	private List<Role> roles = new ArrayList<>();
 
 }

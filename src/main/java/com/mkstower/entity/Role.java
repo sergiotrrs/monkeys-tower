@@ -3,6 +3,7 @@ package com.mkstower.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.RoleFieldLimits;
 
 import jakarta.persistence.*;
@@ -25,7 +26,8 @@ public class Role implements RoleFieldLimits {
 	private String name;
 	@Column(name = "description", length = DESCRIPTION_DB_LENGTH)
 	private String description;	
-//	
+	
 //	@ManyToMany(mappedBy = "roles")
+//	@JsonIgnoreProperties("roles")
 //	private List<User> users = new ArrayList<>();
 }

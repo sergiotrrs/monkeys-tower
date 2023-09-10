@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,20 +28,20 @@ public class Order {
 	@Column(name = "total_amount")
 	private double totalAmount;
 	
-//	@ManyToOne
-//    @JoinColumn(name = "user_id")
-//	private User user;
-//	
-//	@ManyToOne
-//    @JoinColumn(name = "adress_id")
-//	private Address adress;
-//	
-//	@ManyToMany
-//	@JoinTable(
-//			  name = "order_has_products", 
-//			  joinColumns = @JoinColumn(name = "order_id"), 
-//			  inverseJoinColumns = @JoinColumn(name = "product_id"))
-//	private List<Product> products = new ArrayList<>();
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+    @JoinColumn(name = "address_id")
+	private Address deliveryAddress;
+	
+	@ManyToMany
+	@JoinTable(
+			  name = "order_has_products", 
+			  joinColumns = @JoinColumn(name = "order_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "product_id"))	
+	private List<Product> products = new ArrayList<>();
 	
 
 }

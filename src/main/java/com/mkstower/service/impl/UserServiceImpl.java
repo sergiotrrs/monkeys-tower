@@ -1,11 +1,12 @@
 package com.mkstower.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mkstower.entity.User;
+import com.mkstower.entity.*;
 import com.mkstower.repository.UserRepository;
 import com.mkstower.service.UserService;
 
@@ -16,7 +17,10 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository;
 
 	@Override
-	public User createUser(User user) {		
+	public User createUser(User user) {
+		if (user.getRoles().isEmpty())
+			user.setRoles(new ArrayList<Role>(List.of(new Role(1, "Customer", "Customer"))));
+
 		return userRepository.save(user);
 	}
 
