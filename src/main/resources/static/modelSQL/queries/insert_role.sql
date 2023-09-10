@@ -1,3 +1,4 @@
+-- >>>>>>>>>>>>>>   Inserciones para la tabla role" <<<<<<<<<<<<<<<<
 -- Insertar el rol de Customer (Cliente)
 INSERT INTO role (name, description) VALUES ('Customer', 'Registered customers with shopping privileges.');
 

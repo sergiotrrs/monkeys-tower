@@ -1,3 +1,4 @@
+-- >>>>>>>>>>>>>>   Inserciones para la tabla category" <<<<<<<<<<<<<<<<
 -- Insertar categoría "Action Figures"
 INSERT INTO category (name, description) VALUES ('Action Figures', 'Collectible action figures of your favorite characters.');
 

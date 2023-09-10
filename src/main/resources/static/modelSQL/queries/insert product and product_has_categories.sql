@@ -1,4 +1,4 @@
--- Inserciones para la tabla "product"
+-- >>>>>>>>>>>>>>   Inserciones para la tabla product <<<<<<<<<<<<<<<<
 -- Producto 1 - Superhero Action Figure
 INSERT INTO product (active, price, stock, created_at, description, image, name) VALUES (1, 29.99, 150, '2023-09-10 10:00:00', 'Collectible superhero action figure with articulated joints.', 'superhero_action_figure.jpg', 'Superhero Action Figure');
 
@@ -29,8 +29,7 @@ INSERT INTO product (active, price, stock, created_at, description, image, name)
 -- Producto 10 - Outdoor Exploration Kit
 INSERT INTO product (active, price, stock, created_at, description, image, name) VALUES (1, 39.99, 50, '2023-09-10 12:15:00', 'Kit for outdoor exploration and adventure.', 'outdoor_exploration_kit.jpg', 'Outdoor Exploration Kit');
 
-
--- Inserciones para la tabla "product_has_categories"
+-- >>>>>>>>>>>>>>   Inserciones para la tabla product_has_categories <<<<<<<<<<<<<<<<
 
 -- Asociar Producto 1 a categorías "Action Figures" y "Toys for Boys"
 INSERT INTO product_has_categories (product_id, category_id) VALUES (1, 1), (1, 6);  -- Toys for Boys
