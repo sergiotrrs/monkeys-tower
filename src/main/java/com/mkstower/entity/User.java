@@ -48,7 +48,7 @@ public class User implements UserFieldLimits, Serializable {
 	private boolean active;
 	
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER,  cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "user")
 	@JsonIgnoreProperties("user")
 	private List<Address> addresses = new ArrayList<>();
 

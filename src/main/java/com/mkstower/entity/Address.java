@@ -31,8 +31,7 @@ public class Address implements AdressFieldLimits, Serializable {
 	@Column(name = "active")
 	private boolean active;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE )
-	//@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@ManyToOne
     @JsonIgnoreProperties("addresses")
 	private User user;
 	
