@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mkstower.entity.limits.UserFieldLimits;
@@ -23,12 +22,9 @@ public class User implements UserFieldLimits, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id")
-//	private long id;
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private UUID id;
+	private long id;
 	@Column(name = "first_name", nullable = false, length = FIRSTNAME_DB_LENGTH)
 	private String firstname;
 	@Column(name = "last_name", length = LASTNAME_DB_LENGTH)
