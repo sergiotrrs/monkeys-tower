@@ -1,5 +1,6 @@
 package com.mkstower.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,10 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public List<Address> getAllActiveAddresss() {
-		return addressRepository.findAll();
+		//return addressRepository.findAll();
+		List<Address> addresses = new ArrayList<>();
+		addresses.add(new Address());
+		return addresses;
 	}
 
 	@Override
