@@ -10,10 +10,14 @@ public interface UserService extends UserFieldLimits {
 	User createUser(User user);
 	
 	User getUserById(long id);
+
+	User getUserByEmail(String email);
 	
 	List<User> getAllUsers();
 	
 	List<User> getAllActiveUsers();
+	
+	List<User> getAllInactiveUsers();
 	
 	User updateUser(User user, long id);
 	

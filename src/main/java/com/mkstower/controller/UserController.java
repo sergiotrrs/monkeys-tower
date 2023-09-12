@@ -40,6 +40,12 @@ public class UserController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
+	@GetMapping("inactive")
+	public ResponseEntity<List<User>> getAllInactiveUsers() {
+		List<User> users = userService.getAllInactiveUsers();
+		return new ResponseEntity<>(users, HttpStatus.OK);
+	}
+
 	@PutMapping("{id}")
 	public ResponseEntity<User> updateUser(@PathVariable long id, @Validated @RequestBody User userDto) {
 		User updateUser = userService.updateUser(userDto, id);
