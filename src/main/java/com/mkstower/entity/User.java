@@ -35,8 +35,8 @@ public class User implements UserFieldLimits, Serializable {
 	private String password;
 	@Column(name = "avatar", length = AVATAR_DB_LENGTH)
 	private String avatar;
-	@Column(name = "born_at")
-	private Timestamp bornAt;
+	@Column(name = "birthdate")
+	private Timestamp birthdate;
 	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP")
 	private Timestamp createdAt;
 	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")

@@ -21,6 +21,10 @@ public class UserServiceImpl implements UserService {
 		if (user.getRoles().isEmpty())
 			user.setRoles(new ArrayList<Role>(List.of(new Role(1, "Customer", "Customer"))));
 
+		return saveUser(user);
+	}
+	
+	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
 
@@ -31,13 +35,24 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User getUserByEmail(String email) {
+		return userRepository.findByEmail(email)
+				.orElseThrow( ()-> new IllegalStateException ("User does not exist with email: " + email));		
+	}
+
+	@Override
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 
 	@Override
 	public List<User> getAllActiveUsers() {
-		return userRepository.findAll();
+		return userRepository.findAllByActive(true);
+	}
+	
+	@Override
+	public List<User> getAllInactiveUsers() {
+		return userRepository.findAllByActive(false);
 	}
 
 	@Override
@@ -45,14 +60,16 @@ public class UserServiceImpl implements UserService {
 		User existingUser = getUserById(id);
 		existingUser.setFirstname( user.getFirstname());
 		existingUser.setLastname( user.getLastname());
-		existingUser.setAvatar( user.getAvatar());
-		return createUser(existingUser);
+		existingUser.setBirthdate(user.getBirthdate());
+		existingUser.setAvatar( user.getAvatar());		
+		return saveUser(existingUser);
 	}
 
 	@Override
 	public void deleteUser(long id) {
 		User existingUser = getUserById(id);
 		existingUser.setActive(false);		
+		saveUser(existingUser);
 	}
 
 }
