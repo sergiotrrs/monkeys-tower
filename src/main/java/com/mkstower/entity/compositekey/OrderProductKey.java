@@ -1,9 +1,13 @@
 package com.mkstower.entity.compositekey;
 
 import java.io.Serializable;
+
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.*;
 import lombok.*;
 
+@Component
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,8 +20,8 @@ public class OrderProductKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Column( name = "order_id" )
-	long orderId;
+	Long orderId;
 	@Column( name = "product_id" )
-	long productId;	
+	Long productId;	
 
 }
