@@ -11,6 +11,8 @@ public interface UserService extends UserFieldLimits {
 	
 	User getUserById(long id);
 
+	User getUserByIdAndActiveAddress(long id);
+
 	User getUserByEmail(String email);
 	
 	List<User> getAllUsers();

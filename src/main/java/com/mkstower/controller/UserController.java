@@ -28,6 +28,12 @@ public class UserController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
+	@GetMapping("{id}/active-address")
+	public ResponseEntity<User> getUserByIdAndActiveAddress(@PathVariable long id) {
+		User user = userService.getUserByIdAndActiveAddress(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
 	@GetMapping
 	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> users = userService.getAllUsers();
