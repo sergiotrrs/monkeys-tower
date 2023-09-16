@@ -1,6 +1,5 @@
 package com.mkstower.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +13,17 @@ import com.mkstower.service.AddressService;
 public class AddressServiceImpl implements AddressService {
 	
 	@Autowired
-	AddressRepository addressRepository;
+	private AddressRepository addressRepository;
 
 	@Override
 	public Address createAddress(Address address) {		
-		return addressRepository.save(address);
+		return saveAddress(address);
 	}
 
+	public Address saveAddress(Address address) {
+		return addressRepository.save(address);
+	}
+	
 	@Override
 	public Address getAddressById(long id) {
 		return addressRepository.findById(id)
@@ -34,23 +37,29 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public List<Address> getAllActiveAddresss() {
-		//return addressRepository.findAll();
-		List<Address> addresses = new ArrayList<>();
-		addresses.add(new Address());
-		return addresses;
+		return addressRepository.findAllByActive(true);
 	}
 
+	@Override
+	public List<Address> getAllInactiveAddresss() {
+		return addressRepository.findAllByActive(false);
+	}
+	
 	@Override
 	public Address updateAddress(Address address, long id) {
 		Address existingAddress = getAddressById(id);
 		existingAddress.setStreet( address.getStreet());		
+		existingAddress.setCity( address.getCity());		
+		existingAddress.setPostalCode( address.getPostalCode());						
 		return createAddress(existingAddress);
 	}
 
 	@Override
 	public void deleteAddress(long id) {
 		Address existingAddress = getAddressById(id);
-		existingAddress.setActive(false);		
+		existingAddress.setActive(false);	
+		saveAddress(existingAddress);
+		
 	}
 
 }

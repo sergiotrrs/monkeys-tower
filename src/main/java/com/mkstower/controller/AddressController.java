@@ -14,7 +14,7 @@ import com.mkstower.service.AddressService;
 public class AddressController {
 	
 	@Autowired
-	AddressService addressService;
+	private AddressService addressService;
 	
 	@PostMapping
 	public ResponseEntity<Address> createAddress(@Validated @RequestBody Address address) {
@@ -37,6 +37,12 @@ public class AddressController {
 	@GetMapping("active")
 	public ResponseEntity<List<Address>> getAllActiveAddresss() {
 		List<Address> addresses = addressService.getAllActiveAddresss();		
+		return new ResponseEntity<>(addresses, HttpStatus.OK);
+	}
+	
+	@GetMapping("inactive")
+	public ResponseEntity<List<Address>> getAllInactiveAddresss() {
+		List<Address> addresses = addressService.getAllInactiveAddresss();		
 		return new ResponseEntity<>(addresses, HttpStatus.OK);
 	}
 
