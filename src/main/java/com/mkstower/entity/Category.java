@@ -1,5 +1,7 @@
 package com.mkstower.entity;
 
+import java.io.Serializable;
+
 import com.mkstower.entity.limits.CategoryFieldLimits;
 
 import jakarta.persistence.*;
@@ -12,8 +14,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "category")
-public class Category implements CategoryFieldLimits {
+public class Category implements CategoryFieldLimits, Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")

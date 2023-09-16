@@ -1,5 +1,7 @@
 package com.mkstower.entity;
 
+import java.io.Serializable;
+
 import com.mkstower.entity.limits.RoleFieldLimits;
 
 import jakarta.persistence.*;
@@ -12,8 +14,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "role")
-public class Role implements RoleFieldLimits {
+public class Role implements RoleFieldLimits, Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
