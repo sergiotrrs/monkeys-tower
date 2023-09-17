@@ -28,9 +28,9 @@ public class UserController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
-	@GetMapping("{id}/active-address")
-	public ResponseEntity<User> getUserByIdAndActiveAddress(@PathVariable long id) {
-		User user = userService.getUserByIdAndActiveAddress(id);
+	@GetMapping("{id}/address-active")
+	public ResponseEntity<User> getUserByIdAndAddress(@PathVariable long id) {
+		User user = userService.getUserByIdAndAddressActive(id);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	

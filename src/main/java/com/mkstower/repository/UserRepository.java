@@ -15,8 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	Optional<User> findByEmail(String email);
 	
-	//Optional<User> findByIdAndAddressesActive(long id, boolean statusAddress);
-    @Query("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.addresses a WHERE u.id = :userId AND (a.active = true OR a.id IS NULL)")
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.addresses a WHERE u.id = :userId AND (a.active = true OR a.id IS NULL)")
     Optional<User> findByIdAndAddressesActive(@Param("userId") long userId);
 
 }

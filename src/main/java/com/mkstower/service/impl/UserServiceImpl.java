@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User getUserByIdAndActiveAddress(long id) {
+	public User getUserByIdAndAddressActive(long id) {
 		return userRepository.findByIdAndAddressesActive(id)
 				.orElseThrow( ()-> new IllegalStateException ("User does not exist with id: " + id));		
 	}
