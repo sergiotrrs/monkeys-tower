@@ -1,6 +1,5 @@
 package com.mkstower.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +32,10 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Role> getAllActiveRoles() {
-		// return roleRepository.findAll();
-		List<Role> roles = new ArrayList<>();
-		roles.add(new Role());
-		return roles;
-	}
-
-	@Override
 	public Role updateRole(Role role, long id) {
 		Role existingRole = getRoleById(id);
 		existingRole.setName( role.getName());
+		existingRole.setDescription( role.getDescription());
 
 		return createRole(existingRole);
 	}
