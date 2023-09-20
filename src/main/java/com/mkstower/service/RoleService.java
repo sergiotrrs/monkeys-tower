@@ -13,8 +13,6 @@ public interface RoleService extends RoleFieldLimits {
 	
 	List<Role> getAllRoles();
 	
-	List<Role> getAllActiveRoles();
-	
 	Role updateRole(Role role, long id);
 	
 	void deleteRole(long id);

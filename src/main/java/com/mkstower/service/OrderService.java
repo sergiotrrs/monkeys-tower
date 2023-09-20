@@ -12,11 +12,7 @@ public interface OrderService extends OrderFieldLimits {
 	Order getOrderById(long id);
 	
 	List<Order> getAllOrders();
-	
-	List<Order> getAllActiveOrders();
-	
+		
 	Order updateOrder(Order order, long id);
-	
-	void deleteOrder(long id);
-	
+		
 }

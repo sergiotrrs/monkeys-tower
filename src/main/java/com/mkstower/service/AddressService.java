@@ -15,6 +15,8 @@ public interface AddressService extends AdressFieldLimits {
 	
 	List<Address> getAllActiveAddresss();
 	
+	List<Address> getAllInactiveAddresss();
+	
 	Address updateAddress(Address address, long id);
 	
 	void deleteAddress(long id);

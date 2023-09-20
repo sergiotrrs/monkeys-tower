@@ -1,6 +1,5 @@
 package com.mkstower.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order createOrder(Order order) {		
-		return orderRepository.save(order);
+		return saveOrder(order);
 	}
+	
+	public Order saveOrder(Order order) {		
+		return orderRepository.save(order);
+	}	
 
 	@Override
 	public Order getOrderById(long id) {
@@ -32,13 +35,6 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepository.findAll();
 	}
 
-	@Override
-	public List<Order> getAllActiveOrders() {
-		// return orderRepository.findAll();
-		List<Order> orders = new ArrayList<>();
-		orders.add(new Order());
-		return orders;
-	}
 
 	@Override
 	public Order updateOrder(Order order, long id) {
@@ -47,10 +43,5 @@ public class OrderServiceImpl implements OrderService {
 		return createOrder(existingOrder);
 	}
 
-	@Override
-	public void deleteOrder(long id) {
-		Order existingOrder = getOrderById(id);
-		orderRepository.delete(existingOrder);		
-	}
 
 }

@@ -1,5 +1,6 @@
 package com.mkstower.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "product")
-public class Product implements ProductFieldLimits {
+public class Product implements ProductFieldLimits, Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

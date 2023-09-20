@@ -33,6 +33,12 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(id)
 				.orElseThrow( ()-> new IllegalStateException ("User does not exist with id: " + id));		
 	}
+	
+	@Override
+	public User getUserByIdAndAddressActive(long id) {
+		return userRepository.findByIdAndAddressesActive(id)
+				.orElseThrow( ()-> new IllegalStateException ("User does not exist with id: " + id));		
+	}
 
 	@Override
 	public User getUserByEmail(String email) {
