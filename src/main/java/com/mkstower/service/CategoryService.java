@@ -11,9 +11,7 @@ public interface CategoryService extends CategoryFieldLimits {
 	
 	Category getCategoryById(long id);
 	
-	List<Category> getAllCategories();
-	
-	List<Category> getAllActiveCategories();
+	List<Category> getAllCategories();	
 	
 	Category updateCategory(Category category, long id);
 	

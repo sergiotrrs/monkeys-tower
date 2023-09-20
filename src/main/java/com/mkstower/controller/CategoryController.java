@@ -34,12 +34,6 @@ public class CategoryController {
 		return new ResponseEntity<>(categorys, HttpStatus.OK);
 	}
 
-	@GetMapping("active")
-	public ResponseEntity<List<Category>> getAllActiveCategorys() {
-		List<Category> categoryes = categoryService.getAllActiveCategories();		
-		return new ResponseEntity<>(categoryes, HttpStatus.OK);
-	}
-
 	@PutMapping("{id}")
 	public ResponseEntity<Category> updateCategory(@PathVariable long id, @Validated @RequestBody Category category) {
 		Category updateCategory = categoryService.updateCategory(category, id);

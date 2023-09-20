@@ -1,6 +1,5 @@
 package com.mkstower.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,48 +9,48 @@ import com.mkstower.entity.Category;
 import com.mkstower.repository.CategoryRepository;
 import com.mkstower.service.CategoryService;
 
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 	
 	@Autowired
-	CategoryRepository userRepository;
+	CategoryRepository categoryRepository;
 
 	@Override
-	public Category createCategory(Category user) {		
-		return userRepository.save(user);
+	public Category createCategory(Category category) {		
+		return saveCategory(category);
+	}
+	
+	public Category saveCategory(Category category) {		
+		return categoryRepository.save(category);
 	}
 
 	@Override
 	public Category getCategoryById(long id) {
-		return userRepository.findById(id)
+		return categoryRepository.findById(id)
 				.orElseThrow( ()-> new IllegalStateException ("Category does not exist with id: " + id));		
 	}
 
 	@Override
 	public List<Category> getAllCategories() {
-		return userRepository.findAll();
+		return categoryRepository.findAll();
 	}
 
 	@Override
-	public List<Category> getAllActiveCategories() {
-		// return userRepository.findAll();
-		List<Category> categories = new ArrayList<>();
-		categories.add(new Category());
-		return categories;
-	}
-
-	@Override
-	public Category updateCategory(Category user, long id) {
+	public Category updateCategory(Category category, long id) {
 		Category existingCategory = getCategoryById(id);
-		existingCategory.setName( user.getName());
-
-		return createCategory(existingCategory);
+		existingCategory.setName( category.getName());
+		existingCategory.setDescription( category.getDescription());
+		return saveCategory(existingCategory);
 	}
 
 	@Override
 	public void deleteCategory(long id) {
 		Category existingCategory = getCategoryById(id);
-		userRepository.delete(existingCategory);		
+		  if (categoryRepository.isCategoryInUse(id)) {
+		        throw new IllegalStateException("Cannot delete category with ID " + id + " because it is being used by a product.");
+		    }
+		categoryRepository.delete(existingCategory);		
 	}
 
 }
