@@ -34,12 +34,6 @@ public class RoleController {
 		return new ResponseEntity<>(roles, HttpStatus.OK);
 	}
 
-	@GetMapping("active")
-	public ResponseEntity<List<Role>> getAllActiveRoles() {
-		List<Role> roles = roleService.getAllActiveRoles();
-		return new ResponseEntity<>(roles, HttpStatus.OK);
-	}
-
 	@PutMapping("{id}")
 	public ResponseEntity<Role> updateRole(@PathVariable long id, @Validated @RequestBody Role role) {
 		Role updateRole = roleService.updateRole(role, id);
