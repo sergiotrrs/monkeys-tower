@@ -34,11 +34,6 @@ public class OrderController {
 		return new ResponseEntity<>(orders, HttpStatus.OK);
 	}
 
-	@GetMapping("active")
-	public ResponseEntity<List<Order>> getAllActiveOrders() {
-		List<Order> orders = orderService.getAllActiveOrders();
-		return new ResponseEntity<>(orders, HttpStatus.OK);
-	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<Order> updateOrder(@PathVariable long id, @Validated @RequestBody Order order) {
@@ -46,10 +41,5 @@ public class OrderController {
 		return new ResponseEntity<>(updateOrder, HttpStatus.OK);
 	}
 
-	@DeleteMapping("{id}")
-	public ResponseEntity<String> deleteOrder(@PathVariable long id) {
-		orderService.deleteOrder(id);
-		return new ResponseEntity<>("Order id " + id + " successfully deleted", HttpStatus.OK);
-	}
 
 }
