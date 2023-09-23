@@ -24,7 +24,7 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;	
+	private Long id;	
 	@Column(name = "purchase_date")
 	private Timestamp purchaseDate;
 	@Column(name = "delivery_date")

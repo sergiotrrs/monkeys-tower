@@ -24,7 +24,7 @@ public class User implements UserFieldLimits, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private Long id;
 	@Column(name = "first_name", nullable = false, length = FIRSTNAME_DB_LENGTH)
 	private String firstname;
 	@Column(name = "last_name", nullable = false, length = LASTNAME_DB_LENGTH)

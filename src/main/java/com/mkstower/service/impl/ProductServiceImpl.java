@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getAllActiveProducts() {		
 		//return productRepository.findAll();
 		List<Product> products = new ArrayList<>();
-		products.add(new Product(100, "PC", "PC Laptop", "url", 23.12,2, null  ,null, false, null));
+		products.add(new Product());
 		return products;
 	}
 

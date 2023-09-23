@@ -22,7 +22,7 @@ public class Address implements AdressFieldLimits, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private Long id;
 	@Column(name = "street", nullable = false, length = STREET_DB_LENGTH)
 	private String street;
 	@Column(name = "city", length = CITY_DB_LENGTH)

@@ -17,10 +17,10 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository;
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(User user) {		
 		if (user.getRoles().isEmpty())
-			user.setRoles(new ArrayList<Role>(List.of(new Role(1, "Customer", "Customer"))));
-
+			user.setRoles(new ArrayList<Role>(List.of(new Role(1L, "Customer", "Customer"))));
+		user.setId(null);
 		return saveUser(user);
 	}
 	
