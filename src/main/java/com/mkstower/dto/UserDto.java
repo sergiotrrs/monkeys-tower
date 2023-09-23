@@ -2,7 +2,12 @@ package com.mkstower.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mkstower.entity.Address;
+import com.mkstower.entity.Role;
 import com.mkstower.entity.limits.UserFieldLimits;
 
 import jakarta.validation.constraints.*;
@@ -41,6 +46,10 @@ public class UserDto implements UserFieldLimits, Serializable {
 
 	@Past( message = "Birthdate must be in the past.")
 	private Timestamp birthdate;
-
-
+	
+	// TODO change to AdressDto
+	@JsonIgnoreProperties("user")
+	private List<Address> addresses = new ArrayList<>();
+	
+	private List<Role> roles = new ArrayList<>();
 }
