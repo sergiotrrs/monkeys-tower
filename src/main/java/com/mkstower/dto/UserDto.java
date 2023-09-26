@@ -26,14 +26,14 @@ public class UserDto implements UserFieldLimits, Serializable {
 	
 	@NotEmpty(message = "Firstname should not be null or empty")
 	@Size(min= FIRSTNAME_MIN_LENGTH, max= FIRSTNAME_MAX_LENGTH, 
-			message = "Fist name must be between " + FIRSTNAME_MIN_LENGTH + " and "+ FIRSTNAME_MAX_LENGTH + " characters")
+			message = "First name must be between " + FIRSTNAME_MIN_LENGTH + " and "+ FIRSTNAME_MAX_LENGTH + " characters")
 	private String firstname;
 
 	@NotEmpty(message = "Lastname should not be null or empty")
 	@Size(min= LASTNAME_MIN_LENGTH, max= LASTNAME_MAX_LENGTH, 
 			message = "Last name must be between " + LASTNAME_MIN_LENGTH + " and "+ LASTNAME_MAX_LENGTH + " characters")
 	private String lastname;
-
+  
 	@NotEmpty(message = "E-mail should not be null or empty")
 	@Email(message = "Email address should be valid", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,10}")
 	@Size(min= EMAIL_MIN_LENGTH, max= EMAIL_MAX_LENGTH, 
